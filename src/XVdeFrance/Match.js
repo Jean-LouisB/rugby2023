@@ -24,7 +24,6 @@ export default function Match({ matchData }) {
                     </thead>
                     <tbody>
                         <tr>
-                            
                             <th className={matchData['home'] === "France" ? 'text-primary' : ''}>
                                 {matchData['home']}
                             </th>
