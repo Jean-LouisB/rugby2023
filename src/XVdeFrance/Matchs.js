@@ -1,15 +1,18 @@
 import React from 'react';
 import Match from './Match';
 import { useState, useEffect } from 'react';
-import {formatDate} from 'personnal-function';
 import axios from 'axios';
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+const URL = process.env.REACT_APP_API_URL;
+const URL_CM = process.env.REACT_APP_API_URL_CM;
 
 const options = {
     method: 'GET',
-    url: 'https://rugby-live-data.p.rapidapi.com/fixtures/1272/2024',
+    url: "https://"+URL_CM,
     headers: {
-        'X-RapidAPI-Key': '97c5eb555amsh8bf0acdd5341152p1cea7ejsn9881dc91c38c',
-        'X-RapidAPI-Host': 'rugby-live-data.p.rapidapi.com'
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': URL,
     }
 };
 
@@ -25,7 +28,6 @@ const getResultats = async () => {
             }
         });
         return france
-       
     } catch (error) {
         console.error(error);
     }
@@ -36,7 +38,7 @@ export default function Matchs() {
     useEffect(()=>{
         getResultats()
         .then((data)=>{
-            console.log(data);
+            //console.log(data);
             setFrance(data)
         })
         .catch((error)=>{console.log('erreur');})
